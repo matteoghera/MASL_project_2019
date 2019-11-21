@@ -4,12 +4,12 @@ from tensorflow.keras.models import Sequential
 import numpy as np
 
 class AutoEncoder:
-    def __init__(self,num_features,num_latent_node, activation_fun = 'relu', lamda = 0):
+    def __init__(self,num_features,num_latent_node, activation_fun = 'sigmoid', lamda = 0):
         self.model = Sequential([Dense(num_latent_node, activation= activation_fun, input_shape=(num_features,), kernel_regularizer = tf.keras.regularizers.l2(lamda)),
                                  Dense(num_features)])
         
-    def model_settings(self, loss_function='mse', opt_methods='sgd'):
-        self.model.compile(opt_methods, loss = loss_function)
+    def model_settings(self, loss_function='mse', opt_methods='adam'):
+        self.model.compile(opt_methods, loss = loss_function, metrics = ['mse'])
         
     
     def setting_train_test_DS(self, X_train, X_test):
@@ -32,6 +32,5 @@ class AutoEncoder:
         return self.error_e_train
         
     def get_error_recustruction_test(self):
-        self.error_e_test = np.mean((self.X_test-self.recustr_rap_test)**2, axis=1)
-        return self.error_e_test
+        return (np.power(np.sum(np.power((self.X_test-self.recustr_rap_test),2), axis = 1),1/2))
     
