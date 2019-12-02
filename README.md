@@ -1,1 +1,3 @@
 # MASL_project_2019
+>Progetto per il contest del corso di Multivariate analysis and Statistical Learning per l'anno 2019. Il progetto prevede lo sviluppo di un Autoencoder sparso e Denoising Autoecoder in Keras e Tensorflow2 per eseguire l'anomaly detection attraverso riduzione dimensionale su 2 dataset, uno artificiale che simula l'attratore di Lorenz e uno reale preso da Kaggle, il credit card.<br>
+I risultati ottenuti con gli Autoencoder sono stati confrontatati con gli algoritmi PCA e Kernel PCA.<br> 
